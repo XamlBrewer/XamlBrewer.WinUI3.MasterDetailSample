@@ -1,0 +1,121 @@
+﻿<Page x:Class="XamlBrewer.WinUI3.MasterDetailSample.Views.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:models="using:XamlBrewer.WinUI3.MasterDetailSample.Models"
+      xmlns:viewmodels="using:XamlBrewer.WinUI3.MasterDetailSample.ViewModels"
+      mc:Ignorable="d"
+      Background="Transparent">
+    <Page.Resources>
+        <XamlUICommand x:Name="DuplicateCommand"
+                       ExecuteRequested="DuplicateCommand_ExecuteRequested"
+                       Description="Create a clone of this character"
+                       Label="Duplicate">
+            <XamlUICommand.IconSource>
+                <SymbolIconSource Symbol="Copy" />
+            </XamlUICommand.IconSource>
+            <XamlUICommand.KeyboardAccelerators>
+                <KeyboardAccelerator Key="D"
+                                     Modifiers="Control" />
+            </XamlUICommand.KeyboardAccelerators>
+        </XamlUICommand>
+    </Page.Resources>
+    <Page.DataContext>
+        <viewmodels:HomePageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+    <Grid Margin="0 0 0 80"
+          ColumnSpacing="0"
+          RowSpacing="0">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <CommandBar Background="{ThemeResource SystemAccentColorBrush}"
+                    DefaultLabelPosition="Right"></CommandBar>
+        <CommandBar Background="{ThemeResource SystemAccentColorBrush}"
+                    IsEnabled="{x:Bind ViewModel.HasCurrent, Mode=OneWay}"
+                    DefaultLabelPosition="Right"
+                    Grid.Column="1">
+            <AppBarButton Command="{x:Bind ViewModel.Current.DuplicateCommand, Mode=OneWay}"
+                          CommandParameter="{x:Bind ViewModel.Current.Name, Mode=OneWay}" />
+            <AppBarButton Command="{x:Bind ViewModel.Current.DeleteCommand, Mode=OneWay}"
+                          CommandParameter="{x:Bind ViewModel.Current.Name, Mode=OneWay}" />
+        </CommandBar>
+        <ListView x:Name="CharacterListView"
+                  ItemsSource="{x:Bind ViewModel.Items}"
+                  SelectedItem="{x:Bind ViewModel.Current, Mode=TwoWay}"
+                  Grid.Row="1">
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="models:Character">
+                    <UserControl PointerEntered="ListViewItem_PointerEntered"
+                                 PointerExited="ListViewItem_PointerExited">
+                        <Grid Background="Transparent">
+                            <VisualStateManager.VisualStateGroups>
+                                <VisualStateGroup x:Name="HoveringStates">
+                                    <VisualState x:Name="HoverButtonsHidden" />
+                                    <VisualState x:Name="HoverButtonsShown">
+                                        <VisualState.Setters>
+                                            <Setter Target="HoverButtons.Visibility"
+                                                    Value="Visible" />
+                                        </VisualState.Setters>
+                                    </VisualState>
+                                </VisualStateGroup>
+                            </VisualStateManager.VisualStateGroups>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <TextBlock VerticalAlignment="Center"
+                                       Margin="0 8">
+                                <Run Text="{Binding Name}"
+                                     FontWeight="SemiBold" />
+                                <LineBreak />
+                                <Run Text="{Binding Kind}" />
+                            </TextBlock>
+                            <StackPanel x:Name="HoverButtons"
+                                        Orientation="Horizontal"
+                                        Visibility="Collapsed"
+                                        HorizontalAlignment="Right"
+                                        VerticalAlignment="Center"
+                                        Grid.Column="1">
+                                <AppBarButton IsCompact="True"
+                                              HorizontalAlignment="Right"
+                                              Command="{x:Bind DuplicateCommand}"
+                                              CommandParameter="{x:Bind Name}"
+                                              Width="32" />
+                                <AppBarButton IsCompact="True"
+                                              HorizontalAlignment="Right"
+                                              Command="{x:Bind DeleteCommand}"
+                                              CommandParameter="{x:Bind Name}"
+                                              Width="32" />
+                            </StackPanel>
+                        </Grid>
+                    </UserControl>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <Grid Visibility="{x:Bind ViewModel.HasCurrent, Mode=OneWay}"
+              Grid.Column="1"
+              Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <TextBlock Text="{x:Bind ViewModel.Current.Name, Mode=OneWay}"
+                       VerticalAlignment="Center"
+                       FontWeight="SemiBold" />
+
+            <Image Source="{x:Bind ViewModel.Current.ImagePath, Mode=OneWay}"
+                   Margin="20"
+                   VerticalAlignment="Center"
+                   HorizontalAlignment="Right"
+                   Opacity=".9"
+                   Grid.Row="1" />
+        </Grid>
+    </Grid>
+</Page>
