@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "XamlBrewer.WinuI3.MasterDetailSample (Package)", "XamlBrewer.WinuI3.MasterDetailSample (Package)\XamlBrewer.WinuI3.MasterDetailSample (Package).wapproj", "{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}"
+Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "XamlBrewer.WinUI3.MasterDetailSample (Package)", "XamlBrewer.WinuI3.MasterDetailSample (Package)\XamlBrewer.WinUI3.MasterDetailSample (Package).wapproj", "{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlBrewer.WinuI3.MasterDetailSample", "XamlBrewer.WinuI3.MasterDetailSample\XamlBrewer.WinuI3.MasterDetailSample.csproj", "{2CF4A069-52D1-4567-A200-DEA1F05F7078}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlBrewer.WinUI3.MasterDetailSample", "XamlBrewer.WinuI3.MasterDetailSample\XamlBrewer.WinUI3.MasterDetailSample.csproj", "{2CF4A069-52D1-4567-A200-DEA1F05F7078}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
