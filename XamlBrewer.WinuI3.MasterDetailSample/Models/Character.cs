@@ -2,10 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Input;
+using XamlBrewer.WinuI3.Services;
 
 namespace XamlBrewer.WinUI3.MasterDetailSample.Models
 {
-    public partial class Character : ObservableObject
+    public partial class Character : ObservableObject, IMasterDetail
     {
         [ObservableProperty]
         private string name;
@@ -72,6 +73,13 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
                 DeleteCommand = DeleteCommand,
                 DuplicateCommand = DuplicateCommand
             };
+        }
+
+        public bool ApplyFilter(string filter)
+        {
+            return Name.Contains(
+                   filter, StringComparison.InvariantCultureIgnoreCase)
+                || Kind.Contains(filter, StringComparison.InvariantCultureIgnoreCase);
         }
 
         public override string ToString()

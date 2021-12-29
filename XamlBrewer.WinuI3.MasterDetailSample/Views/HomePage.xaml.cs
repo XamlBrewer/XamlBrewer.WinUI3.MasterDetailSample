@@ -41,14 +41,21 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
             if (args.Parameter is not null)
             {
                 var toBeDeleted = ViewModel.Items.FirstOrDefault(c => c.Name == args.Parameter.ToString());
-                ViewModel.Items.Remove(toBeDeleted);
+                // ViewModel.Items.Remove(toBeDeleted);
+                ViewModel.RemoveItem(toBeDeleted);
             }
         }
 
         private void DuplicateCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
         {
             var toBeDuplicated = ViewModel.Items.FirstOrDefault(c => c.Name == args.Parameter.ToString());
-            ViewModel.Items.Add(toBeDuplicated.Clone());
+            // ViewModel.Items.Add(toBeDuplicated.Clone());
+            ViewModel.AddItem(toBeDuplicated.Clone());
+        }
+
+        private void SearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
+        {
+            ViewModel.Filter = args.QueryText;
         }
     }
 }
