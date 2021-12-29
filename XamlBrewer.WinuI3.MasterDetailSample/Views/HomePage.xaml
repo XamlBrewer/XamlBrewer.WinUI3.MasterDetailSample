@@ -9,7 +9,6 @@
       Background="Transparent">
     <Page.Resources>
         <XamlUICommand x:Name="DuplicateCommand"
-                       ExecuteRequested="DuplicateCommand_ExecuteRequested"
                        Description="Create a clone of this character"
                        Label="Duplicate">
             <XamlUICommand.IconSource>

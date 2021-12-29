@@ -2,7 +2,6 @@
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
-using System.Linq;
 
 namespace XamlBrewer.WinUI3.MasterDetailSample.Views
 {
@@ -14,13 +13,8 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
         {
             InitializeComponent();
 
-            deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
-
-            foreach (var character in ViewModel.Items)
-            {
-                character.DeleteCommand = deleteCommand;
-                character.DuplicateCommand = DuplicateCommand;
-            }
+            ViewModel.DeleteCommand = deleteCommand;
+            ViewModel.DuplicateCommand = DuplicateCommand;
         }
 
         private void ListViewItem_PointerEntered(object sender, PointerRoutedEventArgs e)
@@ -34,23 +28,6 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
         private void ListViewItem_PointerExited(object sender, PointerRoutedEventArgs e)
         {
             VisualStateManager.GoToState(sender as Control, "HoverButtonsHidden", true);
-        }
-
-        private void DeleteCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
-        {
-            if (args.Parameter is not null)
-            {
-                var toBeDeleted = ViewModel.Items.FirstOrDefault(c => c.Name == args.Parameter.ToString());
-                // ViewModel.Items.Remove(toBeDeleted);
-                ViewModel.RemoveItem(toBeDeleted);
-            }
-        }
-
-        private void DuplicateCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
-        {
-            var toBeDuplicated = ViewModel.Items.FirstOrDefault(c => c.Name == args.Parameter.ToString());
-            // ViewModel.Items.Add(toBeDuplicated.Clone());
-            ViewModel.AddItem(toBeDuplicated.Clone());
         }
 
         private void SearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
