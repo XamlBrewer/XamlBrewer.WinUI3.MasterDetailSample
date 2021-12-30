@@ -1,7 +1,11 @@
-﻿using Microsoft.UI.Input;
+﻿using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
+using System;
+using System.Threading.Tasks;
+using System.Windows.Input;
 
 namespace XamlBrewer.WinUI3.MasterDetailSample.Views
 {
@@ -16,6 +20,10 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
             ViewModel.DeleteCommand = deleteCommand;
             ViewModel.DuplicateCommand = DuplicateCommand;
         }
+
+        public ICommand NewCommand => new AsyncRelayCommand(OpenNewDialog);
+
+        public ICommand EditCommand => new AsyncRelayCommand(OpenEditDialog);
 
         private void ListViewItem_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
@@ -33,6 +41,22 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
         private void SearchBox_QuerySubmitted(AutoSuggestBox sender, AutoSuggestBoxQuerySubmittedEventArgs args)
         {
             ViewModel.Filter = args.QueryText;
+        }
+
+        private async Task OpenNewDialog()
+        {
+            EditDialog.Title = "New Character";
+            EditDialog.DataContext = ViewModel.NewCharacter;
+            await EditDialog.ShowAsync();
+        }
+
+        private async Task OpenEditDialog()
+        {
+            EditDialog.Title = "Edit Character";
+            var clone = ViewModel.Current.Clone();
+            clone.Name = ViewModel.Current.Name;
+            EditDialog.DataContext = clone;
+            await EditDialog.ShowAsync();
         }
     }
 }

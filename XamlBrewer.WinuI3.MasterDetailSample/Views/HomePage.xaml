@@ -52,13 +52,21 @@
                             Margin="8 0" />
 
             <CommandBar Background="Transparent"
-                        IsEnabled="{x:Bind ViewModel.HasCurrent, Mode=OneWay}"
                         DefaultLabelPosition="Right"
                         Grid.Column="1">
-                <AppBarButton Command="{x:Bind ViewModel.Current.DuplicateCommand, Mode=OneWay}"
-                              CommandParameter="{x:Bind ViewModel.Current.Name, Mode=OneWay}" />
-                <AppBarButton Command="{x:Bind ViewModel.Current.DeleteCommand, Mode=OneWay}"
-                              CommandParameter="{x:Bind ViewModel.Current.Name, Mode=OneWay}" />
+                <AppBarButton Command="{x:Bind NewCommand, Mode=OneWay}"
+                              Icon="Add"
+                              Label="Add" />
+                <AppBarButton Command="{x:Bind EditCommand, Mode=OneWay}"
+                              Icon="Edit"
+                              Label="Edit"
+                              IsEnabled="{x:Bind ViewModel.HasCurrent, Mode=OneWay}" />
+                <AppBarButton Command="{x:Bind ViewModel.DuplicateCommand, Mode=OneWay}"
+                              CommandParameter="{x:Bind ViewModel.Current.Name, Mode=OneWay}"
+                              IsEnabled="{x:Bind ViewModel.HasCurrent, Mode=OneWay}" />
+                <AppBarButton Command="{x:Bind ViewModel.DeleteCommand, Mode=OneWay}"
+                              CommandParameter="{x:Bind ViewModel.Current.Name, Mode=OneWay}"
+                              IsEnabled="{x:Bind ViewModel.HasCurrent, Mode=OneWay}" />
             </CommandBar>
         </Grid>
         <ListView x:Name="CharacterListView"
@@ -132,5 +140,29 @@
                    Opacity=".9"
                    Grid.Row="1" />
         </Grid>
+        <ContentDialog x:Name="EditDialog"
+                       PrimaryButtonText="Save"
+                       SecondaryButtonText="Cancel"
+                       Background="{ThemeResource SystemAccentColor}">
+            <RelativePanel HorizontalAlignment="Stretch">
+                <TextBox x:Name="Name"
+                         Header="Name"
+                         Text="{Binding Name, Mode=TwoWay}"
+                         Margin="4" />
+                <TextBox x:Name="Kind"
+                         Header="Kind"
+                         Text="{Binding Kind, Mode=TwoWay}"
+                         Margin="4"
+                         RelativePanel.RightOf="Name"
+                         RelativePanel.AlignRightWithPanel="True"/>
+                <TextBox x:Name="ImagePath"
+                         Header="Path to Image"
+                         Text="{Binding ImagePath, Mode=TwoWay}"
+                         Margin="4"
+                         RelativePanel.Below="Name"
+                         RelativePanel.AlignLeftWith="Name"
+                         RelativePanel.AlignRightWith="Kind" />
+            </RelativePanel>
+        </ContentDialog>
     </Grid>
 </Page>

@@ -46,6 +46,13 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
             }
         }
 
+        public Character NewCharacter => new Character
+        {
+            Name = "(new)",
+            DeleteCommand = this.DeleteCommand,
+            DuplicateCommand = this.DuplicateCommand
+        };
+
         private void DeleteCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
         {
             if (args.Parameter is not null)
