@@ -13,7 +13,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
         public HomePageViewModel()
         {
             // Populate list.
-            Character.GettingStarted.ForEach(c => Items.Add(c));
+            Character.GettingStarted.OrderBy(c => c.Name).ToList().ForEach(c => Items.Add(c));
         }
 
         public XamlUICommand DeleteCommand
@@ -68,6 +68,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
             var toBeDuplicated = Items.FirstOrDefault(c => c.Name == args.Parameter.ToString());
             // ViewModel.Items.Add(toBeDuplicated.Clone());
             AddItem(toBeDuplicated.Clone());
+            Items.OrderBy(i => i.Name);
         }
     }
 }

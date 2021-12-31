@@ -25,6 +25,10 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
 
         public ICommand EditCommand => new AsyncRelayCommand(OpenEditDialog);
 
+        private ICommand UpdateCommand => new RelayCommand(Update);
+
+        private ICommand InsertCommand => new RelayCommand(Insert);
+
         private void ListViewItem_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
             if (e.Pointer.PointerDeviceType is PointerDeviceType.Mouse or PointerDeviceType.Pen)
@@ -46,6 +50,8 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
         private async Task OpenNewDialog()
         {
             EditDialog.Title = "New Character";
+            EditDialog.PrimaryButtonText = "Insert";
+            EditDialog.PrimaryButtonCommand = InsertCommand;
             EditDialog.DataContext = ViewModel.NewCharacter;
             await EditDialog.ShowAsync();
         }
@@ -53,10 +59,33 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
         private async Task OpenEditDialog()
         {
             EditDialog.Title = "Edit Character";
+            EditDialog.PrimaryButtonText = "Update";
+            EditDialog.PrimaryButtonCommand = UpdateCommand;
             var clone = ViewModel.Current.Clone();
             clone.Name = ViewModel.Current.Name;
             EditDialog.DataContext = clone;
             await EditDialog.ShowAsync();
+        }
+
+        private void Update()
+        {
+            ViewModel.Current.Name = Name.Text;
+            ViewModel.Current.Kind = Kind.Text;
+            ViewModel.Current.Description = Description.Text;
+            ViewModel.Current.ImagePath = ImagePath.Text;
+        }
+
+        private void Insert()
+        {
+            ViewModel.AddItem(new Models.Character
+            {
+                Name = Name.Text,
+                Kind = Kind.Text,
+                Description = Description.Text,
+                ImagePath = ImagePath.Text,
+                DeleteCommand = ViewModel.DeleteCommand,
+                DuplicateCommand = ViewModel.DuplicateCommand
+            }); ;
         }
     }
 }

@@ -10,7 +10,7 @@
     <Page.Resources>
         <XamlUICommand x:Name="DuplicateCommand"
                        Description="Create a clone of this character"
-                       Label="Duplicate">
+                       Label="Clone">
             <XamlUICommand.IconSource>
                 <SymbolIconSource Symbol="Copy" />
             </XamlUICommand.IconSource>
@@ -123,26 +123,40 @@
             </ListView.ItemTemplate>
         </ListView>
         <Grid Visibility="{x:Bind ViewModel.HasCurrent, Mode=OneWay}"
+              Margin="20"
               Grid.Column="1"
               Grid.Row="1">
             <Grid.RowDefinitions>
-                <RowDefinition Height="auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock Text="{x:Bind ViewModel.Current.Name, Mode=OneWay}"
+            <TextBlock 
                        VerticalAlignment="Center"
-                       FontWeight="SemiBold" />
+                       
+                       Margin="100 0">
+                <Run Text="{x:Bind ViewModel.Current.Name, Mode=OneWay}"
+                     FontSize="32"
+                     FontWeight="SemiBold" />
+                <LineBreak />
+                <Run Text="{x:Bind ViewModel.Current.Kind, Mode=OneWay}" />
+            </TextBlock>
 
             <Image Source="{x:Bind ViewModel.Current.ImagePath, Mode=OneWay}"
-                   Margin="20"
                    VerticalAlignment="Center"
                    HorizontalAlignment="Right"
-                   Opacity=".9"
-                   Grid.Row="1" />
+                   Opacity=".4"
+                   Grid.RowSpan="2" />
+
+            <TextBlock Text="{x:Bind ViewModel.Current.Description, Mode=OneWay}"
+                       VerticalAlignment="Center"
+                       TextWrapping="Wrap"
+                       Margin="100 0"
+                       Grid.Row="1" />
+
         </Grid>
         <ContentDialog x:Name="EditDialog"
-                       PrimaryButtonText="Save"
-                       SecondaryButtonText="Cancel"
+                       PrimaryButtonText="Update"
+                       CloseButtonText="Cancel"
                        Background="{ThemeResource SystemAccentColor}">
             <RelativePanel HorizontalAlignment="Stretch">
                 <TextBox x:Name="Name"
@@ -154,7 +168,7 @@
                          Text="{Binding Kind, Mode=TwoWay}"
                          Margin="4"
                          RelativePanel.RightOf="Name"
-                         RelativePanel.AlignRightWithPanel="True"/>
+                         RelativePanel.AlignRightWithPanel="True" />
                 <TextBox x:Name="ImagePath"
                          Header="Path to Image"
                          Text="{Binding ImagePath, Mode=TwoWay}"
@@ -162,6 +176,14 @@
                          RelativePanel.Below="Name"
                          RelativePanel.AlignLeftWith="Name"
                          RelativePanel.AlignRightWith="Kind" />
+                <TextBox x:Name="Description"
+                         Header="Description"
+                         Text="{Binding Description, Mode=TwoWay}"
+                         TextWrapping="Wrap"
+                         Margin="4"
+                         RelativePanel.Below="ImagePath"
+                         RelativePanel.AlignLeftWith="ImagePath"
+                         RelativePanel.AlignRightWith="ImagePath" />
             </RelativePanel>
         </ContentDialog>
     </Grid>

@@ -12,11 +12,13 @@
   <ItemGroup>
     <None Remove="Assets\About.png" />
     <None Remove="Assets\Blurrg.png" />
+    <None Remove="Assets\BobaFett.png" />
     <None Remove="Assets\DarkTrooper.png" />
     <None Remove="Assets\DinDjarin.png" />
     <None Remove="Assets\Grogu.png" />
     <None Remove="Assets\Home.png" />
     <None Remove="Assets\IG11.png" />
+    <None Remove="Assets\Kuiil.png" />
     <None Remove="Assets\MoffGideon.png" />
     <None Remove="Shell.xaml" />
     <None Remove="Views\AboutPage.xaml" />
