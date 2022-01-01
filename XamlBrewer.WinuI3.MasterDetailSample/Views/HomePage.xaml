@@ -95,10 +95,10 @@
                             </Grid.ColumnDefinitions>
                             <TextBlock VerticalAlignment="Center"
                                        Margin="0 8">
-                                <Run Text="{Binding Name}"
+                                <Run Text="{x:Bind Name}"
                                      FontWeight="SemiBold" />
                                 <LineBreak />
-                                <Run Text="{Binding Kind}" />
+                                <Run Text="{x:Bind Kind}" />
                             </TextBlock>
                             <StackPanel x:Name="HoverButtons"
                                         Orientation="Horizontal"
