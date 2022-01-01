@@ -8,20 +8,20 @@
 
     <Grid>
         <TextBlock>
-            <Run>This Desktop app tests a WinUI 3 version of the Community Toolkit Radial Gauge Control</Run>
+            <Run>This WinUI 3 Desktop app expores building a Master-Detail screen</Run>
             <LineBreak />
-            <Run>* without dependencies on removed UWP API calls,</Run>
+            <Run>* with a filterable list on the left,</Run>
             <LineBreak />
-            <Run>* with a more rounded UI, and</Run>
+            <Run>* a detail panel on the right,</Run>
             <LineBreak />
-            <Run>* some small bug fixes.</Run>
+            <Run>* command buttons on both sides, and</Run>
+            <LineBreak />
+            <Run>* an Insert/Edit dialog,</Run>
+            <LineBreak />            
+            <Run>* using Microsoft MVVM Toolkit.</Run>
             <LineBreak /><LineBreak />    
             <LineBreak /><LineBreak />  
-            <Run FontWeight="Bold">Windows Community Toolkit</Run>
-            <LineBreak />
-            <Run>Copyright (c) .NET Foundation and Contributors</Run>
-            <LineBreak />
-            <Run>All rights reserved.</Run>
+            <Run Text="Text and images from " /><Hyperlink NavigateUri="https://starwars.fandom.com/">Wookieepedia.</Hyperlink>
         </TextBlock>
     </Grid>
 </Page>
