@@ -42,7 +42,16 @@ namespace XamlBrewer.WinUI3.ViewModels
 
         public bool HasCurrent => current is not null;
 
-        public T AddItem(T item)
+        public virtual T UpdateItem(T item, T original)
+        {
+            var i = items.IndexOf(original);
+            items[i] = item;
+            OnPropertyChanged(nameof(Items));
+
+            return item;
+        }
+
+        public virtual T AddItem(T item)
         {
             items.Add(item);
             OnPropertyChanged(nameof(Items));
@@ -50,7 +59,7 @@ namespace XamlBrewer.WinUI3.ViewModels
             return item;
         }
 
-        public void RemoveItem(T item)
+        public virtual void RemoveItem(T item)
         {
             items.Remove(item);
             OnPropertyChanged(nameof(Items));

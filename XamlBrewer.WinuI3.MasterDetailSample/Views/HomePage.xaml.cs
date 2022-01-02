@@ -6,6 +6,7 @@ using Microsoft.UI.Xaml.Input;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using XamlBrewer.WinUI3.MasterDetailSample.Models;
 
 namespace XamlBrewer.WinUI3.MasterDetailSample.Views
 {
@@ -69,23 +70,12 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
 
         private void Update()
         {
-            ViewModel.Current.Name = Name.Text;
-            ViewModel.Current.Kind = Kind.Text;
-            ViewModel.Current.Description = Description.Text;
-            ViewModel.Current.ImagePath = ImagePath.Text;
+            ViewModel.UpdateItem(EditDialog.DataContext as Character, ViewModel.Current);
         }
 
         private void Insert()
         {
-            ViewModel.AddItem(new Models.Character
-            {
-                Name = Name.Text,
-                Kind = Kind.Text,
-                Description = Description.Text,
-                ImagePath = ImagePath.Text,
-                DeleteCommand = ViewModel.DeleteCommand,
-                DuplicateCommand = ViewModel.DuplicateCommand
-            }); ;
+            ViewModel.AddItem(EditDialog.DataContext as Character);
         }
     }
 }

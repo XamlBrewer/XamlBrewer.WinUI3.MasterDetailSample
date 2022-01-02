@@ -49,8 +49,8 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
         public Character NewCharacter => new Character
         {
             Name = "(new)",
-            DeleteCommand = this.DeleteCommand,
-            DuplicateCommand = this.DuplicateCommand
+            DeleteCommand = DeleteCommand,
+            DuplicateCommand = DuplicateCommand
         };
 
         private void DeleteCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
