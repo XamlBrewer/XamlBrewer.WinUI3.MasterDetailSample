@@ -77,7 +77,7 @@
                 <DataTemplate x:DataType="models:Character">
                     <UserControl PointerEntered="ListViewItem_PointerEntered"
                                  PointerExited="ListViewItem_PointerExited">
-                        <Grid Background="Transparent">
+                        <RelativePanel Background="Transparent">
                             <VisualStateManager.VisualStateGroups>
                                 <VisualStateGroup x:Name="HoveringStates">
                                     <VisualState x:Name="HoverButtonsHidden" />
@@ -89,11 +89,8 @@
                                     </VisualState>
                                 </VisualStateGroup>
                             </VisualStateManager.VisualStateGroups>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*" />
-                                <ColumnDefinition Width="*" />
-                            </Grid.ColumnDefinitions>
-                            <TextBlock VerticalAlignment="Center"
+                            <TextBlock RelativePanel.AlignLeftWithPanel="True"
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"
                                        Margin="0 8">
                                 <Run Text="{x:Bind Name}"
                                      FontWeight="SemiBold" />
@@ -103,9 +100,8 @@
                             <StackPanel x:Name="HoverButtons"
                                         Orientation="Horizontal"
                                         Visibility="Collapsed"
-                                        HorizontalAlignment="Right"
-                                        VerticalAlignment="Center"
-                                        Grid.Column="1">
+                                        RelativePanel.AlignRightWithPanel="True"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True">
                                 <AppBarButton IsCompact="True"
                                               HorizontalAlignment="Right"
                                               Command="{x:Bind DuplicateCommand}"
@@ -117,7 +113,7 @@
                                               CommandParameter="{x:Bind Name}"
                                               Width="32" />
                             </StackPanel>
-                        </Grid>
+                        </RelativePanel>
                     </UserControl>
                 </DataTemplate>
             </ListView.ItemTemplate>
