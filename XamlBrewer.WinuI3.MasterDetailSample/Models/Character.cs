@@ -23,9 +23,6 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
         [ObservableProperty]
         private ICommand deleteCommand;
 
-        [ObservableProperty]
-        private ICommand duplicateCommand;
-
         public static List<Character> GettingStarted => new List<Character>
         {
             new Character
@@ -94,8 +91,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
                 Kind = Kind,
                 Description = Description,
                 ImagePath = ImagePath,
-                DeleteCommand = DeleteCommand,
-                DuplicateCommand = DuplicateCommand
+                DeleteCommand = DeleteCommand
             };
         }
 

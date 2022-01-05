@@ -1,5 +1,7 @@
-﻿using Microsoft.UI.Xaml.Input;
+﻿using Microsoft.Toolkit.Mvvm.Input;
+using Microsoft.UI.Xaml.Input;
 using System.Linq;
+using System.Windows.Input;
 using XamlBrewer.WinUI3.MasterDetailSample.Models;
 using XamlBrewer.WinUI3.ViewModels;
 
@@ -8,7 +10,6 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
     public partial class HomePageViewModel : MasterDetailViewModel<Character>
     {
         private XamlUICommand deleteCommand;
-        private XamlUICommand duplicateCommand;
 
         public HomePageViewModel()
         {
@@ -31,26 +32,12 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
             }
         }
 
-        public XamlUICommand DuplicateCommand
-        {
-            get => duplicateCommand;
-            set
-            {
-                SetProperty(ref duplicateCommand, value);
-                foreach (var character in Items)
-                {
-                    character.DuplicateCommand = duplicateCommand;
-                }
-
-                duplicateCommand.ExecuteRequested += DuplicateCommand_ExecuteRequested; ;
-            }
-        }
+        public ICommand DuplicateCommand => new RelayCommand<string>(DuplicateCommand_Executed);
 
         public Character NewCharacter => new Character
         {
             Name = "(new)",
-            DeleteCommand = DeleteCommand,
-            DuplicateCommand = DuplicateCommand
+            DeleteCommand = DeleteCommand
         };
 
         private void DeleteCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
@@ -63,9 +50,9 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
             }
         }
 
-        private void DuplicateCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
+        private void DuplicateCommand_Executed(string parm)
         {
-            var toBeDuplicated = Items.FirstOrDefault(c => c.Name == args.Parameter.ToString());
+            var toBeDuplicated = Items.FirstOrDefault(c => c.Name == parm);
             // ViewModel.Items.Add(toBeDuplicated.Clone());
             AddItem(toBeDuplicated.Clone());
             Items.OrderBy(i => i.Name);

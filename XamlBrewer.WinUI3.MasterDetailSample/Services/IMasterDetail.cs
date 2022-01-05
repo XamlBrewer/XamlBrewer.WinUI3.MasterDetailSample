@@ -6,8 +6,6 @@ namespace XamlBrewer.WinuI3.Services
     {
         ICommand DeleteCommand { get; set; }
 
-        ICommand DuplicateCommand { get; set; }
-
         bool ApplyFilter(string filter);
     }
 }

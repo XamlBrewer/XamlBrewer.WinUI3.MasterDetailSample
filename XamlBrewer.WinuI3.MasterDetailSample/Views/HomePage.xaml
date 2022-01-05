@@ -9,6 +9,7 @@
       Background="Transparent">
     <Page.Resources>
         <XamlUICommand x:Name="DuplicateCommand"
+                       Command="{x:Bind ViewModel.DuplicateCommand}"
                        Description="Create a clone of this character"
                        Label="Clone">
             <XamlUICommand.IconSource>
@@ -61,7 +62,7 @@
                               Icon="Edit"
                               Label="Edit"
                               IsEnabled="{x:Bind ViewModel.HasCurrent, Mode=OneWay}" />
-                <AppBarButton Command="{x:Bind ViewModel.DuplicateCommand, Mode=OneWay}"
+                <AppBarButton Command="{StaticResource DuplicateCommand}"
                               CommandParameter="{x:Bind ViewModel.Current.Name, Mode=OneWay}"
                               IsEnabled="{x:Bind ViewModel.HasCurrent, Mode=OneWay}" />
                 <AppBarButton Command="{x:Bind ViewModel.DeleteCommand, Mode=OneWay}"
@@ -104,7 +105,7 @@
                                         RelativePanel.AlignVerticalCenterWithPanel="True">
                                 <AppBarButton IsCompact="True"
                                               HorizontalAlignment="Right"
-                                              Command="{x:Bind DuplicateCommand}"
+                                              Command="{StaticResource DuplicateCommand}"
                                               CommandParameter="{x:Bind Name}"
                                               Width="32" />
                                 <AppBarButton IsCompact="True"
@@ -126,9 +127,7 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
-            <TextBlock 
-                       VerticalAlignment="Center"
-                       
+            <TextBlock VerticalAlignment="Center"
                        Margin="100 0">
                 <Run Text="{x:Bind ViewModel.Current.Name, Mode=OneWay}"
                      FontSize="32"
