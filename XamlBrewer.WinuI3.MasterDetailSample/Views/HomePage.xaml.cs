@@ -12,16 +12,9 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
 {
     public sealed partial class HomePage : Page
     {
-        private readonly StandardUICommand deleteCommand = new(StandardUICommandKind.Delete)
-        {
-            Description = "Remove this character"
-        };
-
         public HomePage()
         {
             InitializeComponent();
-
-            ViewModel.DeleteCommand = deleteCommand;
         }
 
         public ICommand NewCommand => new AsyncRelayCommand(OpenNewDialog);

@@ -1,7 +1,6 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
-using System.Windows.Input;
 using XamlBrewer.WinuI3.Services;
 
 namespace XamlBrewer.WinUI3.MasterDetailSample.Models
@@ -19,9 +18,6 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
 
         [ObservableProperty]
         private string imagePath;
-
-        [ObservableProperty]
-        private ICommand deleteCommand;
 
         public static List<Character> GettingStarted => new List<Character>
         {
@@ -90,8 +86,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
                 Name = $"{Name} clone",
                 Kind = Kind,
                 Description = Description,
-                ImagePath = ImagePath,
-                DeleteCommand = DeleteCommand
+                ImagePath = ImagePath
             };
         }
 

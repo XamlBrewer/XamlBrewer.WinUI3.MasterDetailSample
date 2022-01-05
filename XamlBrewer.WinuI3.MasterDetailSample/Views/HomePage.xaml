@@ -20,6 +20,10 @@
                                      Modifiers="Control" />
             </XamlUICommand.KeyboardAccelerators>
         </XamlUICommand>
+        <StandardUICommand x:Name="DeleteCommand"
+                           Kind="Delete"
+                           Command="{x:Bind ViewModel.DeleteCommand}"
+                           Description="Remove this character" />
     </Page.Resources>
     <Page.DataContext>
         <viewmodels:HomePageViewModel x:Name="ViewModel" />
@@ -65,7 +69,7 @@
                 <AppBarButton Command="{StaticResource DuplicateCommand}"
                               CommandParameter="{x:Bind ViewModel.Current.Name, Mode=OneWay}"
                               IsEnabled="{x:Bind ViewModel.HasCurrent, Mode=OneWay}" />
-                <AppBarButton Command="{x:Bind ViewModel.DeleteCommand, Mode=OneWay}"
+                <AppBarButton Command="{x:Bind DeleteCommand}"
                               CommandParameter="{x:Bind ViewModel.Current.Name, Mode=OneWay}"
                               IsEnabled="{x:Bind ViewModel.HasCurrent, Mode=OneWay}" />
             </CommandBar>
@@ -110,7 +114,7 @@
                                               Width="32" />
                                 <AppBarButton IsCompact="True"
                                               HorizontalAlignment="Right"
-                                              Command="{x:Bind DeleteCommand}"
+                                              Command="{StaticResource DeleteCommand}"
                                               CommandParameter="{x:Bind Name}"
                                               Width="32" />
                             </StackPanel>

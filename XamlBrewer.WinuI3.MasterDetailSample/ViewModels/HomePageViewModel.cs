@@ -1,5 +1,4 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
-using Microsoft.UI.Xaml.Input;
 using System.Linq;
 using System.Windows.Input;
 using XamlBrewer.WinUI3.MasterDetailSample.Models;
@@ -9,42 +8,26 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
 {
     public partial class HomePageViewModel : MasterDetailViewModel<Character>
     {
-        private XamlUICommand deleteCommand;
-
         public HomePageViewModel()
         {
             // Populate list.
             Character.GettingStarted.OrderBy(c => c.Name).ToList().ForEach(c => Items.Add(c));
         }
 
-        public XamlUICommand DeleteCommand
-        {
-            get => deleteCommand;
-            set
-            {
-                SetProperty(ref deleteCommand, value);
-                foreach (var character in Items)
-                {
-                    character.DeleteCommand = deleteCommand;
-                }
-
-                deleteCommand.ExecuteRequested += DeleteCommand_ExecuteRequested;
-            }
-        }
-
         public ICommand DuplicateCommand => new RelayCommand<string>(DuplicateCommand_Executed);
+
+        public ICommand DeleteCommand => new RelayCommand<string>(DeleteCommand_Executed);
 
         public Character NewCharacter => new Character
         {
-            Name = "(new)",
-            DeleteCommand = DeleteCommand
+            Name = "(new)"
         };
 
-        private void DeleteCommand_ExecuteRequested(XamlUICommand sender, ExecuteRequestedEventArgs args)
+        private void DeleteCommand_Executed(string parm)
         {
-            if (args.Parameter is not null)
+            if (parm is not null)
             {
-                var toBeDeleted = Items.FirstOrDefault(c => c.Name == args.Parameter.ToString());
+                var toBeDeleted = Items.FirstOrDefault(c => c.Name == parm);
                 // Items.Remove(toBeDeleted);
                 RemoveItem(toBeDeleted);
             }
