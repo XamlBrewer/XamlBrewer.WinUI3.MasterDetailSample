@@ -70,7 +70,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
 
         private void Insert()
         {
-            ViewModel.AddItem(EditDialog.DataContext as Character);
+            ViewModel.Items.Add(EditDialog.DataContext as Character);
         }
     }
 }

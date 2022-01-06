@@ -50,20 +50,6 @@ namespace XamlBrewer.WinUI3.ViewModels
             return item;
         }
 
-        public virtual T AddItem(T item)
-        {
-            items.Add(item);
-            OnPropertyChanged(nameof(Items));
-
-            return item;
-        }
-
-        public virtual void RemoveItem(T item)
-        {
-            items.Remove(item);
-            OnPropertyChanged(nameof(Items));
-        }
-
         public abstract bool ApplyFilter(T item, string filter);
     }
 }

@@ -33,17 +33,14 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
             if (parm is not null)
             {
                 var toBeDeleted = Items.FirstOrDefault(c => c.Name == parm);
-                // Items.Remove(toBeDeleted);
-                RemoveItem(toBeDeleted);
+                Items.Remove(toBeDeleted);
             }
         }
 
         private void DuplicateCommand_Executed(string parm)
         {
             var toBeDuplicated = Items.FirstOrDefault(c => c.Name == parm);
-            // ViewModel.Items.Add(toBeDuplicated.Clone());
-            AddItem(toBeDuplicated.Clone());
-            Items.OrderBy(i => i.Name);
+            Items.Add(toBeDuplicated.Clone());
         }
     }
 }
