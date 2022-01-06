@@ -1,11 +1,10 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System;
 using System.Collections.Generic;
-using XamlBrewer.WinuI3.Services;
 
 namespace XamlBrewer.WinUI3.MasterDetailSample.Models
 {
-    public partial class Character : ObservableObject, IMasterDetail
+    public partial class Character : ObservableObject
     {
         [ObservableProperty]
         private string name;

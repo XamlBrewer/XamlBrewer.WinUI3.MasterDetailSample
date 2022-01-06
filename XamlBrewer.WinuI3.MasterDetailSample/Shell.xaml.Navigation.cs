@@ -66,5 +66,10 @@ namespace XamlBrewer.WinUI3.MasterDetailSample
         {
             return NavigationView.SelectedItem as NavigationViewItem;
         }
+
+        public void SetCurrentPage(Type type)
+        {
+            ContentFrame.Navigate(type);
+        }
     }
 }

@@ -1,11 +1,10 @@
 ﻿using Microsoft.Toolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Linq;
-using XamlBrewer.WinuI3.Services;
 
 namespace XamlBrewer.WinUI3.ViewModels
 {
-    public partial class MasterDetailViewModel<T> : ObservableObject where T : IMasterDetail
+    public abstract partial class MasterDetailViewModel<T> : ObservableObject
     {
         private ObservableCollection<T> items = new ObservableCollection<T>();
 
@@ -38,7 +37,7 @@ namespace XamlBrewer.WinUI3.ViewModels
             }
         }
 
-        public ObservableCollection<T> Items => filter is null ? items : new ObservableCollection<T>(items.Where(i => i.ApplyFilter(filter)));
+        public ObservableCollection<T> Items => filter is null ? items : new ObservableCollection<T>(items.Where(i => ApplyFilter(i, filter)));
 
         public bool HasCurrent => current is not null;
 
@@ -64,5 +63,7 @@ namespace XamlBrewer.WinUI3.ViewModels
             items.Remove(item);
             OnPropertyChanged(nameof(Items));
         }
+
+        public abstract bool ApplyFilter(T item, string filter);
     }
 }

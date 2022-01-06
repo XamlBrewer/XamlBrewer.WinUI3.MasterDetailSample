@@ -23,6 +23,11 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
             Name = "(new)"
         };
 
+        public override bool ApplyFilter(Character item, string filter)
+        {
+            return item.ApplyFilter(filter);
+        }
+
         private void DeleteCommand_Executed(string parm)
         {
             if (parm is not null)
