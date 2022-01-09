@@ -92,7 +92,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
         public bool ApplyFilter(string filter)
         {
             return Name.Contains(
-                   filter, StringComparison.InvariantCultureIgnoreCase)
+                    filter, StringComparison.InvariantCultureIgnoreCase)
                 || Kind.Contains(filter, StringComparison.InvariantCultureIgnoreCase)
                 || Description.Contains(filter, StringComparison.InvariantCultureIgnoreCase);
         }

@@ -37,7 +37,10 @@ namespace XamlBrewer.WinUI3.ViewModels
             }
         }
 
-        public ObservableCollection<T> Items => filter is null ? items : new ObservableCollection<T>(items.Where(i => ApplyFilter(i, filter)));
+        public ObservableCollection<T> Items =>
+            filter is null
+                ? items
+                : new ObservableCollection<T>(items.Where(i => ApplyFilter(i, filter)));
 
         public bool HasCurrent => current is not null;
 
