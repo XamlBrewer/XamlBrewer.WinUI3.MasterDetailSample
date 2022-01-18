@@ -35,7 +35,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
             original.Description = item.Description;
             original.ImagePath = item.ImagePath;
 
-            return item;
+            return original;
         }
 
         private void DeleteCommand_Executed(string parm)
