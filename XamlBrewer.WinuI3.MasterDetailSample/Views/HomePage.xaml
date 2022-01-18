@@ -97,10 +97,10 @@
                             <TextBlock RelativePanel.AlignLeftWithPanel="True"
                                        RelativePanel.AlignVerticalCenterWithPanel="True"
                                        Margin="0 8">
-                                <Run Text="{x:Bind Name}"
+                                <Run Text="{x:Bind Name, Mode=OneWay}"
                                      FontWeight="SemiBold" />
                                 <LineBreak />
-                                <Run Text="{x:Bind Kind}" />
+                                <Run Text="{x:Bind Kind, Mode=OneWay}" />
                             </TextBlock>
                             <StackPanel x:Name="HoverButtons"
                                         Orientation="Horizontal"
