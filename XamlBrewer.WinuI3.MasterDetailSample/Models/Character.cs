@@ -89,6 +89,16 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
             };
         }
 
+        public Character UpdateFrom(Character otherCharacter)
+        {
+            Name = otherCharacter.Name;
+            Kind = otherCharacter.Kind;
+            Description = otherCharacter.Description;
+            ImagePath = otherCharacter.ImagePath;
+
+            return this;
+        }
+
         public bool ApplyFilter(string filter)
         {
             return Name.Contains(

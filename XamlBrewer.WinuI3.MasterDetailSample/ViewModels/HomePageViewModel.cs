@@ -30,12 +30,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
 
         public override Character UpdateItem(Character item, Character original)
         {
-            original.Name = item.Name;
-            original.Kind = item.Kind;
-            original.Description = item.Description;
-            original.ImagePath = item.ImagePath;
-
-            return original;
+            return original.UpdateFrom(item);
         }
 
         private void DeleteCommand_Executed(string parm)
