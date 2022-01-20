@@ -1,4 +1,5 @@
 ﻿using Microsoft.Toolkit.Mvvm.Input;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Input;
 using XamlBrewer.WinUI3.MasterDetailSample.Models;
@@ -12,6 +13,8 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
         {
             // Populate list.
             Character.GettingStarted.OrderBy(c => c.Name).ToList().ForEach(c => Items.Add(c));
+
+            Items.CollectionChanged += Items_CollectionChanged;
         }
 
         public ICommand DuplicateCommand => new RelayCommand<string>(DuplicateCommand_Executed);
@@ -30,6 +33,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
 
         public override Character UpdateItem(Character item, Character original)
         {
+            // Does not raise CollectionChanged.
             return original.UpdateFrom(item);
         }
 
@@ -46,6 +50,11 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
         {
             var toBeDuplicated = Items.FirstOrDefault(c => c.Name == parm);
             Items.Add(toBeDuplicated.Clone());
+        }
+
+        private void Items_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            Debug.WriteLine($"Collection changed: {e.Action}.");
         }
     }
 }

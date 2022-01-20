@@ -46,9 +46,16 @@ namespace XamlBrewer.WinUI3.ViewModels
 
         public virtual T UpdateItem(T item, T original)
         {
+            var hasCurrent = HasCurrent;
+
             var i = items.IndexOf(original);
-            items[i] = item;
-            OnPropertyChanged(nameof(Items));
+            items[i] = item; // Raises CollectionChanged.
+
+            if (hasCurrent && !HasCurrent)
+            {
+                // Restore Current.
+                Current = item;
+            }
 
             return item;
         }
