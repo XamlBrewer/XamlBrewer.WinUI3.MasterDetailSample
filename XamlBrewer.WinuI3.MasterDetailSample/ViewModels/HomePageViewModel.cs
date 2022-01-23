@@ -49,7 +49,9 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
         private void DuplicateCommand_Executed(string parm)
         {
             var toBeDuplicated = Items.FirstOrDefault(c => c.Name == parm);
-            Items.Add(toBeDuplicated.Clone());
+            var clone = toBeDuplicated.Clone();
+            Items.Add(clone);
+            Current = clone;
         }
 
         private void Items_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
