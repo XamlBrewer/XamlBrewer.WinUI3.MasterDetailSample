@@ -42,7 +42,11 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
             if (parm is not null)
             {
                 var toBeDeleted = Items.FirstOrDefault(c => c.Name == parm);
-                Items.Remove(toBeDeleted);
+
+                // Not OK when a filter is applied.
+                // Items.Remove(toBeDeleted);
+
+                DeleteItem(toBeDeleted);
             }
         }
 
@@ -50,7 +54,8 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
         {
             var toBeDuplicated = Items.FirstOrDefault(c => c.Name == parm);
             var clone = toBeDuplicated.Clone();
-            Items.Add(clone);
+            // Items.Add(clone);
+            AddItem(clone);
             Current = clone;
         }
 

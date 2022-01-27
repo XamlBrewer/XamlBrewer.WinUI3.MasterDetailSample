@@ -32,8 +32,15 @@ namespace XamlBrewer.WinUI3.ViewModels
             get => filter;
             set
             {
+                var current = Current;
+
                 SetProperty(ref filter, value);
                 OnPropertyChanged(nameof(Items));
+
+                if (current is not null && Items.Contains(current))
+                {
+                    Current = current;
+                }
             }
         }
 
@@ -44,12 +51,28 @@ namespace XamlBrewer.WinUI3.ViewModels
 
         public bool HasCurrent => current is not null;
 
+        public virtual T AddItem(T item)
+        {
+            items.Add(item);
+            if (filter is not null)
+            {
+                OnPropertyChanged(nameof(Items));
+            }
+
+            return item;
+        }
+
         public virtual T UpdateItem(T item, T original)
         {
             var hasCurrent = HasCurrent;
 
             var i = items.IndexOf(original);
             items[i] = item; // Raises CollectionChanged.
+            
+            if (filter is not null)
+            {
+                OnPropertyChanged(nameof(Items));
+            }
 
             if (hasCurrent && !HasCurrent)
             {
@@ -58,6 +81,16 @@ namespace XamlBrewer.WinUI3.ViewModels
             }
 
             return item;
+        }
+
+        public virtual void DeleteItem(T item)
+        {
+            items.Remove(item);
+
+            if (filter is not null)
+            {
+                OnPropertyChanged(nameof(Items));
+            }
         }
 
         public abstract bool ApplyFilter(T item, string filter);

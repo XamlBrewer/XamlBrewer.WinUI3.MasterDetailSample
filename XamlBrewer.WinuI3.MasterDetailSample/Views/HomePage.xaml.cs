@@ -70,7 +70,10 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
 
         private void Insert()
         {
-            ViewModel.Items.Add(EditDialog.DataContext as Character);
+            // Does not work when filter is active:
+            // ViewModel.Items.Add(EditDialog.DataContext as Character);
+            
+            ViewModel.AddItem(EditDialog.DataContext as Character);
         }
     }
 }
