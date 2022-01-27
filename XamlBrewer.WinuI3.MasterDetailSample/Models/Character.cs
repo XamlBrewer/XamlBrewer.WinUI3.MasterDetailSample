@@ -18,7 +18,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
         [ObservableProperty]
         private string imagePath;
 
-        public static List<Character> GettingStarted => new List<Character>
+        public static List<Character> GettingStarted => new()
         {
             new Character
             {

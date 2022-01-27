@@ -3,6 +3,7 @@ using Microsoft.UI.Input;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Input;
+using Microsoft.UI.Xaml.Navigation;
 using System;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -17,6 +18,20 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
             InitializeComponent();
         }
 
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            ViewModel.PropertyChanged += ViewModel_PropertyChanged;
+
+            base.OnNavigatedTo(e);
+        }
+
+        protected override void OnNavigatingFrom(NavigatingCancelEventArgs e)
+        {
+            ViewModel.PropertyChanged -= ViewModel_PropertyChanged;
+
+            base.OnNavigatingFrom(e);
+        }
+
         public ICommand NewCommand => new AsyncRelayCommand(OpenNewDialog);
 
         public ICommand EditCommand => new AsyncRelayCommand(OpenEditDialog);
@@ -24,6 +39,14 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
         private ICommand UpdateCommand => new RelayCommand(Update);
 
         private ICommand InsertCommand => new RelayCommand(Insert);
+
+        private void ViewModel_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == "Current" && ViewModel.HasCurrent)
+            {
+                CharacterListView.ScrollIntoView(ViewModel.Current);
+            }
+        }
 
         private void ListViewItem_PointerEntered(object sender, PointerRoutedEventArgs e)
         {
@@ -72,8 +95,9 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
         {
             // Does not work when filter is active:
             // ViewModel.Items.Add(EditDialog.DataContext as Character);
-            
-            ViewModel.AddItem(EditDialog.DataContext as Character);
+
+            var character = ViewModel.AddItem(EditDialog.DataContext as Character);
+            ViewModel.Current = character;
         }
     }
 }

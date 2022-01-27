@@ -6,7 +6,7 @@ namespace XamlBrewer.WinUI3.ViewModels
 {
     public abstract partial class MasterDetailViewModel<T> : ObservableObject
     {
-        private ObservableCollection<T> items = new ObservableCollection<T>();
+        private readonly ObservableCollection<T> items = new();
 
         // Too bad these don't work (yet?).
         // [ObservableProperty]
@@ -16,6 +16,11 @@ namespace XamlBrewer.WinUI3.ViewModels
         // [ObservableProperty]
         // [AlsoNotifyChangeFor(nameof(Items))]
         private string filter;
+
+        public ObservableCollection<T> Items =>
+            filter is null
+                ? items
+                : new ObservableCollection<T>(items.Where(i => ApplyFilter(i, filter)));
 
         public T Current
         {
@@ -43,11 +48,6 @@ namespace XamlBrewer.WinUI3.ViewModels
                 }
             }
         }
-
-        public ObservableCollection<T> Items =>
-            filter is null
-                ? items
-                : new ObservableCollection<T>(items.Where(i => ApplyFilter(i, filter)));
 
         public bool HasCurrent => current is not null;
 
