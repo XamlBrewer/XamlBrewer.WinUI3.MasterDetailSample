@@ -81,6 +81,9 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
         public Character()
         {
             name = "(new)";
+            kind = string.Empty;
+            description = string.Empty;
+            imagePath = "/Assets/*.png";
         }
 
         public Character Clone()
@@ -108,14 +111,9 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
         {
             return Name.Contains(
                     filter, StringComparison.InvariantCultureIgnoreCase)
-                || Kind.Contains(filter, StringComparison.InvariantCultureIgnoreCase)
-                || Description.Contains(filter, StringComparison.InvariantCultureIgnoreCase);
+                || (Kind is not null && Kind.Contains(filter, StringComparison.InvariantCultureIgnoreCase))
+                || (Description is not null && Description.Contains(filter, StringComparison.InvariantCultureIgnoreCase));
         }
-
-        public Character NewCharacter => new Character
-        {
-            Name = "(new)"
-        };
 
         public override string ToString()
         {

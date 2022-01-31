@@ -97,7 +97,10 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
             // ViewModel.Items.Add(EditDialog.DataContext as Character);
 
             var character = ViewModel.AddItem(EditDialog.DataContext as Character);
-            ViewModel.Current = character;
+            if (ViewModel.Items.Contains(character))
+            {
+                ViewModel.Current = character;
+            }
         }
     }
 }

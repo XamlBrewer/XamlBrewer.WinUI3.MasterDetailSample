@@ -49,8 +49,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
-            <AutoSuggestBox x:Name="SearchBox"
-                            QuerySubmitted="SearchBox_QuerySubmitted"
+            <AutoSuggestBox QuerySubmitted="SearchBox_QuerySubmitted"
                             QueryIcon="Find"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"

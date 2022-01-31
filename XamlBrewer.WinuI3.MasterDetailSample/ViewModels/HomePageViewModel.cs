@@ -51,7 +51,10 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
             var clone = toBeDuplicated.Clone();
             // Items.Add(clone);
             AddItem(clone);
-            Current = clone;
+            if (Items.Contains(clone))
+            {
+                Current = clone;
+            }
         }
 
         private void Items_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
