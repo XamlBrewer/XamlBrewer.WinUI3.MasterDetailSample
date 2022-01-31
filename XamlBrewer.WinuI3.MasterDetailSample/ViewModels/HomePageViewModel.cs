@@ -21,11 +21,6 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.ViewModels
 
         public ICommand DeleteCommand => new RelayCommand<string>(DeleteCommand_Executed);
 
-        public Character NewCharacter => new Character
-        {
-            Name = "(new)"
-        };
-
         public override bool ApplyFilter(Character item, string filter)
         {
             return item.ApplyFilter(filter);

@@ -71,7 +71,7 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
             EditDialog.Title = "New Character";
             EditDialog.PrimaryButtonText = "Insert";
             EditDialog.PrimaryButtonCommand = InsertCommand;
-            EditDialog.DataContext = ViewModel.NewCharacter;
+            EditDialog.DataContext = new Character();
             await EditDialog.ShowAsync();
         }
 

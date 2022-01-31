@@ -78,6 +78,11 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
             }
         };
 
+        public Character()
+        {
+            name = "(new)";
+        }
+
         public Character Clone()
         {
             return new Character
@@ -106,6 +111,11 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Models
                 || Kind.Contains(filter, StringComparison.InvariantCultureIgnoreCase)
                 || Description.Contains(filter, StringComparison.InvariantCultureIgnoreCase);
         }
+
+        public Character NewCharacter => new Character
+        {
+            Name = "(new)"
+        };
 
         public override string ToString()
         {
