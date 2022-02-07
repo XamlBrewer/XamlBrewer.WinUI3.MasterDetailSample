@@ -33,7 +33,7 @@
                         IsSettingsVisible="False"
                         Margin="0">
             <NavigationView.PaneCustomContent>
-                <HyperlinkButton NavigateUri="https://xamlbrewer.wordpress.com"
+                <HyperlinkButton NavigateUri="https://xamlbrewer.wordpress.com/2022/02/07/building-a-master-detail-page-with-winui-3-and-mvvm/"
                                  Margin="8 0">Blog post</HyperlinkButton>
             </NavigationView.PaneCustomContent>
             <NavigationView.MenuItems>
