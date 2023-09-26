@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net6.0-windows10.0.19041.0</TargetFramework>
@@ -8,6 +8,8 @@
     <Platforms>x86;x64;arm64</Platforms>
     <RuntimeIdentifiers>win10-x86;win10-x64;win10-arm64</RuntimeIdentifiers>
     <UseWinUI>true</UseWinUI>
+    <EnableMsixTooling>true</EnableMsixTooling>
+    <PublishProfile>Properties\PublishProfiles\win10-$(Platform).pubxml</PublishProfile>
   </PropertyGroup>
   <ItemGroup>
     <None Remove="Assets\About.png" />
@@ -20,12 +22,28 @@
     <None Remove="Assets\IG11.png" />
     <None Remove="Assets\Kuiil.png" />
     <None Remove="Assets\MoffGideon.png" />
+    <None Remove="Images\LockScreenLogo.scale-200.png" />
+    <None Remove="Images\SplashScreen.scale-200.png" />
+    <None Remove="Images\Square150x150Logo.scale-200.png" />
+    <None Remove="Images\Square44x44Logo.scale-200.png" />
+    <None Remove="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <None Remove="Images\StoreLogo.png" />
+    <None Remove="Images\Wide310x150Logo.scale-200.png" />
     <None Remove="Shell.xaml" />
     <None Remove="Views\AboutPage.xaml" />
     <None Remove="Views\HomePage.xaml" />
   </ItemGroup>
   <ItemGroup>
     <Page Remove="App.xaml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\LockScreenLogo.scale-200.png" />
+    <Content Include="Images\SplashScreen.scale-200.png" />
+    <Content Include="Images\Square150x150Logo.scale-200.png" />
+    <Content Include="Images\Square44x44Logo.scale-200.png" />
+    <Content Include="Images\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Images\StoreLogo.png" />
+    <Content Include="Images\Wide310x150Logo.scale-200.png" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.32002.261
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33927.249
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{C7167F0D-BC9F-4E6E-AFE1-012C56B48DB5}") = "XamlBrewer.WinUI3.MasterDetailSample (Package)", "XamlBrewer.WinuI3.MasterDetailSample (Package)\XamlBrewer.WinUI3.MasterDetailSample (Package).wapproj", "{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XamlBrewer.WinUI3.MasterDetailSample", "XamlBrewer.WinuI3.MasterDetailSample\XamlBrewer.WinUI3.MasterDetailSample.csproj", "{2CF4A069-52D1-4567-A200-DEA1F05F7078}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XamlBrewer.WinUI3.MasterDetailSample", "XamlBrewer.WinuI3.MasterDetailSample\XamlBrewer.WinUI3.MasterDetailSample.csproj", "{2CF4A069-52D1-4567-A200-DEA1F05F7078}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,36 +15,24 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Debug|arm64.ActiveCfg = Debug|arm64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Debug|arm64.Build.0 = Debug|arm64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Debug|arm64.Deploy.0 = Debug|arm64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Debug|x64.ActiveCfg = Debug|x64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Debug|x64.Build.0 = Debug|x64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Debug|x64.Deploy.0 = Debug|x64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Debug|x86.ActiveCfg = Debug|x86
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Debug|x86.Build.0 = Debug|x86
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Debug|x86.Deploy.0 = Debug|x86
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Release|arm64.ActiveCfg = Release|arm64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Release|arm64.Build.0 = Release|arm64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Release|arm64.Deploy.0 = Release|arm64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Release|x64.ActiveCfg = Release|x64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Release|x64.Build.0 = Release|x64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Release|x64.Deploy.0 = Release|x64
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Release|x86.ActiveCfg = Release|x86
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Release|x86.Build.0 = Release|x86
-		{AB58A5A8-A6AB-4931-AFD7-103FF25980DF}.Release|x86.Deploy.0 = Release|x86
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Debug|arm64.ActiveCfg = Debug|arm64
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Debug|arm64.Build.0 = Debug|arm64
+		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Debug|arm64.Deploy.0 = Debug|arm64
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Debug|x64.ActiveCfg = Debug|x64
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Debug|x64.Build.0 = Debug|x64
+		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Debug|x64.Deploy.0 = Debug|x64
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Debug|x86.ActiveCfg = Debug|x86
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Debug|x86.Build.0 = Debug|x86
+		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Debug|x86.Deploy.0 = Debug|x86
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Release|arm64.ActiveCfg = Release|arm64
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Release|arm64.Build.0 = Release|arm64
+		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Release|arm64.Deploy.0 = Release|arm64
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Release|x64.ActiveCfg = Release|x64
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Release|x64.Build.0 = Release|x64
+		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Release|x64.Deploy.0 = Release|x64
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Release|x86.ActiveCfg = Release|x86
 		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Release|x86.Build.0 = Release|x86
+		{2CF4A069-52D1-4567-A200-DEA1F05F7078}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
