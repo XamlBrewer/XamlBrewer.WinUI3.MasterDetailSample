@@ -10,6 +10,8 @@ namespace XamlBrewer.WinUI3.MasterDetailSample
 
             InitializeComponent();
 
+            AppWindow.SetIcon("Assets/Beer.ico");
+
             (Application.Current as App).EnsureSettings();
             ApplyTheme();
         }
