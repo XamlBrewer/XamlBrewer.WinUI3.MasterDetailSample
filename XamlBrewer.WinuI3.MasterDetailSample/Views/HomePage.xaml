@@ -50,6 +50,7 @@
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
             <AutoSuggestBox QuerySubmitted="SearchBox_QuerySubmitted"
+                            TextChanged="SearchBox_TextChanged"
                             QueryIcon="Find"
                             HorizontalAlignment="Stretch"
                             VerticalAlignment="Center"

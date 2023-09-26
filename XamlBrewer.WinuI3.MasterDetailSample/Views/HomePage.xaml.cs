@@ -66,6 +66,14 @@ namespace XamlBrewer.WinUI3.MasterDetailSample.Views
             ViewModel.Filter = args.QueryText;
         }
 
+        private void SearchBox_TextChanged(AutoSuggestBox sender, AutoSuggestBoxTextChangedEventArgs args)
+        {
+            if (args.Reason == AutoSuggestionBoxTextChangeReason.UserInput)
+            {
+                ViewModel.Filter = sender.Text;
+            }
+        }
+
         private async Task OpenNewDialog()
         {
             EditDialog.Title = "New Character";
